@@ -1,0 +1,16 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 480px), screen and (max-height: 580px)  {
+   body {
+      font-size: 10px;
+   }
+}
+
+h1 {
+  color: #1a237e;
+  text-shadow: -3px -2px 1px #c5cae9;
+}
