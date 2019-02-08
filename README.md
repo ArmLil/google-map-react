@@ -1,3 +1,12 @@
+To run this project, please follow the steps below
+
+Open your terminal
+
+1. git clone https://github.com/ArmLil/google-map-react.git
+2. cd google-map-react
+3. npm install
+4. npm start
+
 I created this project from the scratch
 
 I've used
