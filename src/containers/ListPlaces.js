@@ -39,8 +39,7 @@
 	    width: '100%',
 	    maxWidth: 360,
 	    backgroundColor: theme.palette.background.paper,
-			height: 500,
-			maxHeight: 450,
+			height: 405,
 			overflowX: 'hidden',
 		  overflowY: 'scroll',
 	  }

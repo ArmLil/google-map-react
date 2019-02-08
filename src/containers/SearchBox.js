@@ -12,16 +12,18 @@ import { setCenter } from '../actions';
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit,
     display: 'flex',
     alignItems: 'center',
-    minWidth : 150,
-    paddingLeft: 30,
+    margin: theme.spacing.unit,
+    minWidth : 169,
+    paddingLeft: 10,
   },
   input: {
     paddingLeft: 8,
-    width: '90%',
-    height: '25px',
+    margin: 2,
+    width: '100%',
+    minWidth: 110,
+    height: 25,
     border: 'solid 0.5px #e0e0e0',
   },
   iconButton: {
@@ -85,21 +87,21 @@ class SearchBox extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
-      <p style={{color: "#ef5350", padding: 0, margin: 0}}> {this.state.notification} </p>
-      <Paper className={classes.root} elevation={1}>
-	      <Autocomplete
-	          className={classes.input}
-	          onPlaceSelected={
-              (place) => this.handleOnPlaceSelected(place)
-            }
-            onKeyPress={(evn) => this.handleOnKeyPress(evn) }
-	          types={['(regions)']}
-	      />
-        <Divider className={classes.divider} />
-        <IconButton className={classes.iconButton} aria-label="Search" disabled>
-          <SearchIcon />
-        </IconButton>
-      </Paper>
+        <p style={{color: "#ef5350", padding: 0, margin: 0}}> {this.state.notification} </p>
+        <Paper className={classes.root} elevation={1}>
+  	      <Autocomplete
+  	          className={classes.input}
+  	          onPlaceSelected={
+                (place) => this.handleOnPlaceSelected(place)
+              }
+              onKeyPress={(evn) => this.handleOnKeyPress(evn) }
+  	          types={['(regions)']}
+  	      />
+          <Divider className={classes.divider} />
+          <IconButton className={classes.iconButton} aria-label="Search" disabled>
+            <SearchIcon />
+          </IconButton>
+        </Paper>
       </div>
     )
 	}}

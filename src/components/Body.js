@@ -12,10 +12,9 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
 		position: 'relative',
-		top: '18vh',
+		top: '12vh',
     marginLeft: 30,
     marginRight: 30,
-
   },
   paperList: {
     display: 'flex',
@@ -24,7 +23,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     minWidth: 180,
-    minHeight: 70,
+    minHeight: 60,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -33,7 +32,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     marginBottom: 50,
     background:'#757575',
-    height: 540,
+    height: 500,
   },
 });
 

@@ -13,6 +13,7 @@ const styles = {
     display:'flex',
     alignItems: 'center',
     flexWrap: 'noWrap',
+    bottom: '90vh'
   }
 };
 

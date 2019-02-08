@@ -6,12 +6,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 const styles = theme => ({
   root: {
-    overflowY :'hidden',
 		alignItems: "center",
 		justifyContent: "space-between",
-    top: "auto",
+    top: "92vh",
     bottom: 0,
     backgroundColor:'transparent',
+    color: '#bdbdbd',
   },
   toolbar: {
     alignItems: "center",
