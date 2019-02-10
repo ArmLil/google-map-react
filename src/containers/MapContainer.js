@@ -11,47 +11,47 @@ Geocode.enableDebug();
 
 class MapContainer extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			error: false,
-			dragStartMarker: '',
-			dragEndMarker: {}
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: false,
+      dragStartMarker: '',
+      dragEndMarker: {}
+    }
+  }
 
-	handleGeocode = (lat, lng) => {
-		Geocode.fromLatLng(lat, lng).then(response => {
-			this.setState({
-				dragEndMarker: {
-					place: response.results[0]
-				},
-				error: false
-			});
-			this.props.updatePlace(this.state.dragStartMarker, this.state.dragEndMarker)
-		}, error => {
-			this.setState({error: true})
-			alert('Please, select anouther location!')
-			console.error('GeocodeError', error);
-		})
-	}
+  handleGeocode = (lat, lng) => {
+    Geocode.fromLatLng(lat, lng).then(response => {
+      this.setState({
+        dragEndMarker: {
+          place: response.results[0]
+        },
+        error: false
+      });
+      this.props.updatePlace(this.state.dragStartMarker, this.state.dragEndMarker)
+    }, error => {
+      this.setState({error: true})
+      alert('Please, select anouther location!')
+      console.error('GeocodeError', error);
+    })
+  }
 
-	toggleInfoWindow = (marker, boolenOpen) => {
-		const newMarker = Object.assign({}, marker, {infoWindow: boolenOpen})
-		this.props.updatePlace(marker, newMarker)
-		// if(boolenOpen) this.props.setCenter(marker.location)
-	}
+  toggleInfoWindow = (marker, boolenOpen) => {
+    const newMarker = Object.assign({}, marker, {infoWindow: boolenOpen})
+    this.props.updatePlace(marker, newMarker)
+    // if(boolenOpen) this.props.setCenter(marker.location)
+  }
 
-	handleDragStart = (evn, marker) => {
-		this.setState({dragStartMarker: marker})
-	}
+  handleDragStart = (evn, marker) => {
+    this.setState({dragStartMarker: marker})
+  }
 
-	handleDragEnd = (evn) => {
-		this.handleGeocode(evn.latLng.lat(), evn.latLng.lng())
-	}
+  handleDragEnd = (evn) => {
+    this.handleGeocode(evn.latLng.lat(), evn.latLng.lng())
+  }
 
-	render() {
-		return (
+  render() {
+    return (
       <MapComponent
         onMarkerDragEnd={this.handleDragEnd}
         onDragStart={this.handleDragStart}
@@ -63,7 +63,7 @@ class MapContainer extends React.Component {
         mapElement={<div style = {{height: `100%`}}/>}>
       </MapComponent>
     )
-	}
+  }
 }
 
 const mapStateToProps = state => ({
@@ -72,8 +72,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	updatePlace,
-	setCenter
+  updatePlace,
+  setCenter
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

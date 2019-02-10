@@ -7,29 +7,29 @@ import Typography from '@material-ui/core/Typography';
 
 
 const styles = {
-	root: {
-		flexGrow: 1
-	},
-	appBar: {
-		display: 'flex',
-		alignItems: 'center',
-		flexWrap: 'noWrap',
-		bottom: '90vh'
-	}
+  root: {
+    flexGrow: 1
+  },
+  appBar: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'noWrap',
+    bottom: '90vh'
+  }
 };
 
 function Header(props) {
-	const {classes} = props;
+  const {classes} = props;
 
-	return (
+  return (
     <div className={classes.root}>
-  		<AppBar className={classes.appBar} color="default">
-  			<Toolbar >
-  				<h1>
-  					Редактор маршрутов</h1>
-  			</Toolbar>
-  		</AppBar>
-  	</div>
+      <AppBar className={classes.appBar} color="default">
+        <Toolbar >
+          <h1>
+            Редактор маршрутов</h1>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 

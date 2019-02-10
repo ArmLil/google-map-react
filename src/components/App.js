@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Body from '../components/Body';
 
 function App() {
-	return (
+  return (
     <div>
       <Header/>
       <Body/>

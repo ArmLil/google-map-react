@@ -30,7 +30,7 @@ module.exports = {
     errorDetails: true,
     source: true,
   },
-	plugins: [
+  plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     }),

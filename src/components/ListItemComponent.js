@@ -11,52 +11,52 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 
 const styles = theme => ({
-	item: {
-		borderTop: 'solid 1px #757575',
-		borderBottom: 'solid 1px #757575',
-		margin: 1.5,
-		height: 50,
-		overflow: 'hidden'
-	}
+  item: {
+    borderTop: 'solid 1px #757575',
+    borderBottom: 'solid 1px #757575',
+    margin: 1.5,
+    height: 50,
+    overflow: 'hidden'
+  }
 });
 
 function ListItemComponent(props) {
-	const {classes} = props;
-	return (
-		<ListItem
-			className={classes.item}
-			role={undefined}
-			dense
-			button
-			onClick={() =>
-				props.handleListItemClick(props.elem)
-			}>
-			<IconButton
-				className={classes.iconButton}
-				style={{padding: 0}}
-				disabled>
-				<LocationOn/>
-			</IconButton>
-			<ListItemText
-				primary={props.elem.place.formatted_address}/>
-			<ListItemSecondaryAction>
-				<IconButton
-					className={classes.button}
-					aria-label="Delete"
-					onClick={() =>
-						props.clickHandler(props.elem, props.index)
-					}>
-					<DeleteIcon/>
-				</IconButton>
-			</ListItemSecondaryAction>
-		</ListItem>
-	)
+  const {classes} = props;
+  return (
+    <ListItem
+      className={classes.item}
+      role={undefined}
+      dense
+      button
+      onClick={() =>
+        props.handleListItemClick(props.elem)
+      }>
+      <IconButton
+        className={classes.iconButton}
+        style={{padding: 0}}
+        disabled>
+        <LocationOn/>
+      </IconButton>
+      <ListItemText
+        primary={props.elem.place.formatted_address}/>
+      <ListItemSecondaryAction>
+        <IconButton
+          className={classes.button}
+          aria-label="Delete"
+          onClick={() =>
+            props.clickHandler(props.elem, props.index)
+          }>
+          <DeleteIcon/>
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+  )
 }
 
 ListItemComponent.propTypes = {
-	classes: PropTypes.object.isRequired,
-	elem: PropTypes.object.isRequired,
-	clickHandler: PropTypes.func.isRequired
+  classes: PropTypes.object.isRequired,
+  elem: PropTypes.object.isRequired,
+  clickHandler: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ListItemComponent);
