@@ -23,15 +23,29 @@ const styles = theme => ({
 function ListItemComponent(props) {
 	const {classes} = props;
 	return (
-		<ListItem className={classes.item} role={undefined} dense="dense" button="button" onClick={() => props.handleListItemClick(props.elem)}>
-			<IconButton className={classes.iconButton} style={{
-					padding: 0
-				}} disabled="disabled">
+		<ListItem
+			className={classes.item}
+			role={undefined}
+			dense
+			button
+			onClick={() =>
+				props.handleListItemClick(props.elem)
+			}>
+			<IconButton
+				className={classes.iconButton}
+				style={{padding: 0}}
+				disabled>
 				<LocationOn/>
 			</IconButton>
-			<ListItemText primary={props.elem.place.formatted_address}/>
+			<ListItemText
+				primary={props.elem.place.formatted_address}/>
 			<ListItemSecondaryAction>
-				<IconButton className={classes.button} aria-label="Delete" onClick={() => props.clickHandler(props.elem, props.index)}>
+				<IconButton
+					className={classes.button}
+					aria-label="Delete"
+					onClick={() =>
+						props.clickHandler(props.elem, props.index)
+					}>
 					<DeleteIcon/>
 				</IconButton>
 			</ListItemSecondaryAction>

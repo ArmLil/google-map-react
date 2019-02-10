@@ -19,8 +19,9 @@ const MapComponent = withGoogleMap((props) => (
 					onClick={() => props.toggleInfoWindow(marker, true)}>
 					{
 						(marker.infoWindow) &&
-						<InfoWindow onCloseClick={() => props.toggleInfoWindow(marker, false)}>
-							<span>{marker.place.formatted_address}</span>
+						<InfoWindow onCloseClick={() =>
+								props.toggleInfoWindow(marker, false)}>
+								<span>{marker.place.formatted_address}</span>
 						</InfoWindow>
 					}
 				</Marker>)

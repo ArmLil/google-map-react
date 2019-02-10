@@ -103,7 +103,7 @@ class SearchBox extends Component {
 				<IconButton
           className={classes.iconButton}
           aria-label="Search"
-          disabled="disabled">
+          disabled>
 					<SearchIcon/>
 				</IconButton>
 			</Paper>

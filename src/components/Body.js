@@ -41,15 +41,15 @@ function Body(props) {
 
 	return (
     <div className={classes.root}>
-  		<Grid container="container" spacing={24}>
-  			<Grid item="item" xs={12} sm={4}>
+  		<Grid container spacing={24}>
+  			<Grid item xs={12} sm={4}>
   				<SearchBox/>
   				<Paper className={classes.paperList}>
   					<ListPlaces/>
   				</Paper>
   			</Grid>
 
-  			<Grid item="item" xs={12} sm={6}>
+  			<Grid item xs={12} sm={6}>
   				<Paper className={classes.paperMap}>
   					<MapContainer/>
   				</Paper>
