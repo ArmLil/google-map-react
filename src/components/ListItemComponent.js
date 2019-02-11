@@ -27,14 +27,12 @@ function ListItemComponent(props) {
       className={classes.item}
       role={undefined}
       dense
-      button
-      onClick={() =>
-        props.handleListItemClick(props.elem)
-      }>
+      >
       <IconButton
         className={classes.iconButton}
         style={{padding: 0}}
-        disabled>
+        onClick={() =>
+          props.iconButtonClick(props.elem)}>
         <LocationOn/>
       </IconButton>
       <ListItemText
@@ -44,7 +42,7 @@ function ListItemComponent(props) {
           className={classes.button}
           aria-label="Delete"
           onClick={() =>
-            props.clickHandler(props.elem, props.index)
+            props.onDeleteClick(props.elem, props.index)
           }>
           <DeleteIcon/>
         </IconButton>
@@ -56,7 +54,8 @@ function ListItemComponent(props) {
 ListItemComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   elem: PropTypes.object.isRequired,
-  clickHandler: PropTypes.func.isRequired
+  iconButtonClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ListItemComponent);
