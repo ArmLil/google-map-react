@@ -20,7 +20,7 @@ const getPlaces = (state = [], action) => {
       return [
         ...state, {
           place: action.place,
-          id: action.place.id,
+          id: action.place.place_id,
           location: wrapLocation(location)
         }
       ]
@@ -36,9 +36,10 @@ const getPlaces = (state = [], action) => {
     case 'UPDATE_PLACE':
       return state.map(elem => {
         if (elem == action.place) {
+          const {place} = action.newPlace
           const newObj = Object.assign({}, elem, action.newPlace, {
-            id: action.newPlace.place.place_id,
-            location: action.newPlace.place.geometry.location
+            id: place.place_id,
+            location: wrapLocation(place.geometry.location)
           })
           return newObj
         }
