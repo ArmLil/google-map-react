@@ -33,6 +33,7 @@ class MapContainer extends React.Component {
       this.setState({error: true})
       alert('Please, select anouther location!')
       console.error('GeocodeError', error);
+      this.props.updatePlace(this.state.dragStartMarker, this.state.dragStartMarker)
     })
   }
 

@@ -63,20 +63,22 @@ class ListPlaces extends React.Component {
       return;
     }
 
-    const items = reorder(this.props.getPlaces, result.source.index, result.destination.index);
+    const items = reorder(
+      this.props.getPlaces,
+      result.source.index,
+      result.destination.index
+    );
+
     this.props.updatePlacesArray(items);
   }
 
-  handleOnClick = (elem, index) => {
+  handleDeleteClick = (elem, index) => {
     this.props.removePlace(elem, index)
-    //this part is added to avoid the delay of onclick
-    this.setState({deleted: true})
-    setTimeout(() => {
-      this.setState({deleted: false})
-    }, 200)
+    // this.setState({deleted: true})
+    // setTimeout(() => this.setState({deleted: false}), 200)
   }
 
-  handleListItemClick = (elem) => {
+  handleIconButtonClick = (elem) => {
     this.props.setCenter(elem.location)
   }
 
@@ -86,16 +88,26 @@ class ListPlaces extends React.Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable">
           {
-            (provided, snapshot) => (<div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+            (provided, snapshot) => (<div ref={provided.innerRef}
+              style={getListStyle(snapshot.isDraggingOver)}>
               {
                 this.props.getPlaces.map((elem, index) => {
-                  return (<Draggable key={elem.id} draggableId={elem.id} index={index}>
-                    {
-                      (provided, snapshot) => (<div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}>
-                        <ListItemComponent elem={elem} index={index} clickHandler={this.handleOnClick} handleListItemClick={this.handleListItemClick} key={elem.place.id}></ListItemComponent>
-                      </div>)
-                    }
-                  </Draggable>)
+                  return (
+                    <Draggable key={elem.id} draggableId={elem.id} index={index}>
+                      {
+                        (provided, snapshot) => (
+                          <div ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={getItemStyle(snapshot.isDragging,
+                              provided.draggableProps.style)}>
+                            <ListItemComponent elem={elem} index={index}
+                              onDeleteClick={this.handleDeleteClick}
+                              iconButtonClick={this.handleIconButtonClick}
+                              key={elem.place.id}></ListItemComponent>
+                          </div>)
+                        }
+                    </Draggable>)
                 })
               }
               {provided.placeholder}
