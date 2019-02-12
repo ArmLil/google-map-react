@@ -46,18 +46,18 @@ class SearchBox extends Component {
     notification: '',
   }
 
-  handleOnPlaceSelected = (place) => {
+  handleOnPlaceSelected = (newPlace) => {
     const autocomplete = this.refs.autocomplete;
     const places = this.props.getPlaces;
-    if (place.id) {
+    if (newPlace.place_id) {
       //check if place selected
-      if (places.filter(el => el.id === place.id).length > 0) {
-        this.setState({notification: 'The location is already selected'})
+      if (places.filter(el => el.id === newPlace.place_id).length > 0) {
+        this.setState({notification: 'Данное местоположение уже выбран!'})
         setTimeout(() => this.setState({notification: ''}), 3000)
       } else {
-        const lat = place.geometry.location.lat()
-        const lng = place.geometry.location.lng()
-        this.props.addPlace(place, {lat, lng}, place.place_id)
+        const lat = newPlace.geometry.location.lat()
+        const lng = newPlace.geometry.location.lng()
+        this.props.addPlace(newPlace, {lat, lng}, newPlace.place_id)
         this.props.setCenter({lat, lng})
       }
       autocomplete.refs.input.value = '';
