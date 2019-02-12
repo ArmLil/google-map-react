@@ -25,8 +25,7 @@ function Header(props) {
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="default">
         <Toolbar >
-          <h1>
-            Редактор маршрутов</h1>
+          <h1>Редактор маршрутов</h1>
         </Toolbar>
       </AppBar>
     </div>
