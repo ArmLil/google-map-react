@@ -22,9 +22,12 @@ class MapContainer extends React.Component {
 
   handleGeocode = (lat, lng) => {
     Geocode.fromLatLng(lat, lng).then(response => {
+      const place = response.results[0]
       this.setState({
         dragEndMarker: {
-          place: response.results[0]
+          place,
+          location:place.geometry.location,
+          id: place.place_id,
         },
         error: false
       });
@@ -32,7 +35,7 @@ class MapContainer extends React.Component {
     }, error => {
       this.setState({error: true})
       alert('Please, select anouther location!')
-      console.error('GeocodeError', error);
+      console.log('GeocodeError', error);
       this.props.updatePlace(this.state.dragStartMarker, this.state.dragStartMarker)
     })
   }

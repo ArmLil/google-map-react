@@ -55,8 +55,10 @@ class SearchBox extends Component {
         this.setState({notification: 'The location is already selected'})
         setTimeout(() => this.setState({notification: ''}), 3000)
       } else {
-        this.props.addPlace(place)
-        this.props.setCenter(place.geometry.location)
+        const lat = place.geometry.location.lat()
+        const lng = place.geometry.location.lng()
+        this.props.addPlace(place, {lat, lng}, place.place_id)
+        this.props.setCenter({lat, lng})
       }
       autocomplete.refs.input.value = '';
     }
