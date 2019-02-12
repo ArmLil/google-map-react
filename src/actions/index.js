@@ -1,6 +1,8 @@
-export const addPlace = (place) => ({
+export const addPlace = (place, location, id) => ({
   type: 'ADD_PLACE',
   place,
+  location,
+  id,
 })
 
 export const removePlace = (place, index) => ({
