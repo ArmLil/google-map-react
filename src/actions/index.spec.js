@@ -4,16 +4,15 @@ describe('place actions', () => {
   it('addPlace should create ADD_PLACE action', () => {
     expect(actions.addPlace('My Place','location', 'anyId')).toEqual({
       type: 'ADD_PLACE',
-      place: 'My Place',
+      name: 'My Place',
       location: 'location',
       id: 'anyId',
     })
   })
 
   it('removePlace should create REMOVE_PLACE action', () => {
-    expect(actions.removePlace('My Place', 1)).toEqual({
+    expect(actions.removePlace(1)).toEqual({
       type: 'REMOVE_PLACE',
-      place: 'My Place',
       index: 1
     })
   })

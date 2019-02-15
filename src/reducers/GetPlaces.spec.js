@@ -11,13 +11,13 @@ describe( 'getPlaces reducer', () => {
     expect(
       getPlaces([], {
         type: 'ADD_PLACE',
-        place: 'My Place',
+        name: 'My Place',
         location: {lat: 'lat', lng: 'lng'},
         id: 'anyId',
       })
     ).toEqual([
       {
-        place: 'My Place',
+        name: 'My Place',
         location: {lat: 'lat',lng: 'lng'},
         id: 'anyId',
         infoWindow: false,
@@ -26,36 +26,37 @@ describe( 'getPlaces reducer', () => {
   })
 
   it('should handle REMOVE_PLACE', () => {
-    expect(
-      getPlaces([{
-        type: 'REMOVE_PLACE',
-        place: 'My Place',
-        index: 0,
-      }, {
-        type: 'REMOVE_PLACE',
-        place: 'Removable Place',
-        index: 1,
-      }], {
-        type: 'REMOVE_PLACE',
-        place: 'Removable Place',
-        index: 1,
-      })
-    ).toEqual([{
-      type: 'REMOVE_PLACE',
+    const initialState = [{
       place: 'My Place',
       index: 0,
-    }])
+    }, {
+      place: 'Removable Place',
+      index: 1,
+    }]
+
+    const action = {
+      type: 'REMOVE_PLACE',
+      index: 1,
+    }
+
+    const expectedState = [{
+      place: 'My Place',
+      index: 0,
+    }]
+
+    expect(getPlaces(initialState,action))
+    .toEqual(expectedState)
   })
 
   it('should handle UPDATE_PLACE, it finds old place and updates with new place', () => {
     const initialState = [{
-      place: 'old',
+      name: 'old',
       id: 'id',
       location: 'location',
       infoWindow: false,
     },
     {
-      place: 'another',
+      name: 'another',
       id: 'anotherId',
       location: 'anotherLocation',
     }]
@@ -63,25 +64,25 @@ describe( 'getPlaces reducer', () => {
     const action = {
       type: 'UPDATE_PLACE',
       place: {
-        place: 'old',
+        name: 'old',
         id: 'id',
         location: 'location',
         infoWindow: false,
       },
       newPlace: {
-        place:'newPlace',
+        name:'newPlace',
         id:'newId',
         location: 'newLoc',
       }
     }
     const expectedState = [{
-      place: 'newPlace',
+      name: 'newPlace',
       id: 'newId',
       location: 'newLoc',
       infoWindow: false,
     },
     {
-      place: 'another',
+      name: 'another',
       id: 'anotherId',
       location: 'anotherLocation',
     }]

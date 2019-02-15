@@ -36,7 +36,7 @@ function ListItemComponent(props) {
         <LocationOn/>
       </IconButton>
       <ListItemText
-        primary={props.elem.place.formatted_address}/>
+        primary={props.elem.name}/>
       <ListItemSecondaryAction>
         <IconButton
           className={classes.button}

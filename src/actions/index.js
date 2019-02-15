@@ -1,13 +1,12 @@
-export const addPlace = (place, location, id) => ({
+export const addPlace = (name, location, id) => ({
   type: 'ADD_PLACE',
-  place,
+  name,
   location,
   id,
 })
 
-export const removePlace = (place, index) => ({
+export const removePlace = (index) => ({
   type: 'REMOVE_PLACE',
-  place,
   index,
 })
 

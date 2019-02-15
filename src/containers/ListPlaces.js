@@ -40,7 +40,6 @@ const getListStyle = isDraggingOver => ({
 const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
     height: 405,
     overflowX: 'hidden',
@@ -49,33 +48,23 @@ const styles = theme => ({
 });
 
 class ListPlaces extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deleted: false
-    }
-    this.onDragEnd = this.onDragEnd.bind(this);
-  }
 
-  onDragEnd(result) {
+  onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
-
     const items = reorder(
       this.props.getPlaces,
       result.source.index,
       result.destination.index
     );
-
     this.props.updatePlacesArray(items);
   }
 
   handleDeleteClick = (elem, index) => {
-    this.props.removePlace(elem, index)
-    // this.setState({deleted: true})
-    // setTimeout(() => this.setState({deleted: false}), 200)
+    event.preventDefault()
+    this.props.removePlace(index)
   }
 
   handleIconButtonClick = (elem) => {
@@ -104,7 +93,7 @@ class ListPlaces extends React.Component {
                             <ListItemComponent elem={elem} index={index}
                               onDeleteClick={this.handleDeleteClick}
                               iconButtonClick={this.handleIconButtonClick}
-                              key={elem.place.id}></ListItemComponent>
+                              key={elem.id}></ListItemComponent>
                           </div>)
                         }
                     </Draggable>)

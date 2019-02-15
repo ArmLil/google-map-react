@@ -31,8 +31,8 @@ const styles = theme => ({
     position: 'relative',
     margin: theme.spacing.unit,
     marginBottom: 50,
-    background: '#757575',
-    height: 500
+    minWidth: 180,
+    height: 500,
   }
 });
 

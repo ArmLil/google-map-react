@@ -25,7 +25,7 @@ class MapContainer extends React.Component {
       const place = response.results[0]
       this.setState({
         dragEndMarker: {
-          place,
+          name: place.formatted_address,
           location:place.geometry.location,
           id: place.place_id,
         },

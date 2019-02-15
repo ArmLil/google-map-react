@@ -14,14 +14,14 @@ const MapComponent = withGoogleMap((props) => (
           draggable={true}
           onDragEnd={(evn, marker) => props.onMarkerDragEnd(evn, marker)}
           onDragStart={(evn) => props.onDragStart(evn, marker)} key={marker.id}
-          name={marker.place.name}
+          name={marker.name}
           position={marker.location}
           onClick={() => props.toggleInfoWindow(marker, true)}>
           {
             (marker.infoWindow) &&
             <InfoWindow onCloseClick={() =>
                 props.toggleInfoWindow(marker, false)}>
-                <span>{marker.place.formatted_address}</span>
+                <span>{marker.name}</span>
             </InfoWindow>
           }
         </Marker>)

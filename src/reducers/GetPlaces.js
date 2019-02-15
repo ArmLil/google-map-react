@@ -3,7 +3,7 @@ export const getPlaces = (state = [], action) => {
     case 'ADD_PLACE':
       return [
         ...state, {
-          place: action.place,
+          name: action.name,
           location: action.location,
           id: action.id,
           infoWindow: false
@@ -11,6 +11,7 @@ export const getPlaces = (state = [], action) => {
       ]
       break;
     case 'REMOVE_PLACE':
+    console.log({action});
       return [
         ...state.slice(0, action.index),
         ...state.slice(action.index + 1)
