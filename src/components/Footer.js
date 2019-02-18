@@ -5,7 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
 
-const styles = theme => ({
+const styles = {
   root: {
     alignItems: "center",
     justifyContent: "space-between",
@@ -18,14 +18,14 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "space-between"
   }
-});
+}
 
 function Footer(props) {
   const {classes} = props;
   return (
     <AppBar position="fixed" color="default" className={classes.root}>
       <Toolbar className={classes.toolbar}>
-        2019 Lili fun-box
+        2019 | Lili google-map
       </Toolbar>
     </AppBar>
   )

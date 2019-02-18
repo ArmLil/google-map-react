@@ -10,7 +10,7 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 
-const styles = theme => ({
+const styles = {
   item: {
     borderTop: 'solid 1px #757575',
     borderBottom: 'solid 1px #757575',
@@ -18,7 +18,7 @@ const styles = theme => ({
     height: 50,
     overflow: 'hidden'
   }
-});
+}
 
 function ListItemComponent(props) {
   const {classes} = props;
