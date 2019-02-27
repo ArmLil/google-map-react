@@ -35,5 +35,10 @@ module.exports = {
       template: "./src/index.html"
     }),
     new FriendlyErrorsWebpackPlugin(),
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  }
 };
