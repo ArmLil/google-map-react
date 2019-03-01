@@ -1,13 +1,13 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
-import {removePlace} from '../actions';
-import {updatePlacesArray} from '../actions';
-import {setCenter} from '../actions';
-import ListItemComponent from '../components/ListItemComponent';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { removePlace } from "../actions";
+import { updatePlacesArray } from "../actions";
+import { setCenter } from "../actions";
+import ListItemComponent from "../components/ListItemComponent";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -18,38 +18,33 @@ const reorder = (list, startIndex, endIndex) => {
 const grid = 2;
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
+  userSelect: "none",
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
   // change background colour if dragging
-  background: isDragging
-    ? '#c5cae9'
-    : 'inherit',
+  background: isDragging ? "#c5cae9" : "inherit",
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver
-    ? '#ffebee'
-    : 'inherit',
+  background: isDraggingOver ? "#ffebee" : "inherit",
   padding: grid,
-  width: 'inherit'
+  width: "inherit"
 });
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: "100%",
     backgroundColor: theme.palette.background.paper,
     height: 405,
-    overflowX: 'hidden',
-    overflowY: 'scroll'
+    overflowX: "hidden",
+    overflowY: "scroll"
   }
 });
 
 class ListPlaces extends React.Component {
-
-  onDragEnd = (result) => {
+  onDragEnd = result => {
     // dropped outside the list
     if (!result.destination) {
       return;
@@ -60,55 +55,68 @@ class ListPlaces extends React.Component {
       result.destination.index
     );
     this.props.updatePlacesArray(items);
-  }
+  };
 
   handleDeleteClick = (elem, index) => {
-    event.preventDefault()
-    this.props.removePlace(index)
-  }
+    event.preventDefault();
+    this.props.removePlace(index);
+  };
 
-  handleIconButtonClick = (elem) => {
-    this.props.setCenter(elem.location)
-  }
+  handleIconButtonClick = elem => {
+    this.props.setCenter(elem.location);
+  };
 
   render() {
-    const {classes} = this.props;
-    return (<List className={classes.root}>
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable">
-          {
-            (provided, snapshot) => (<div ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}>
-              {
-                this.props.getPlaces.map((elem, index) => {
+    const { classes } = this.props;
+    return (
+      <List className={classes.root}>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                style={getListStyle(snapshot.isDraggingOver)}
+              >
+                {this.props.getPlaces.map((elem, index) => {
                   return (
-                    <Draggable key={elem.id} draggableId={elem.id} index={index}>
-                      {
-                        (provided, snapshot) => (
-                          <div ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={getItemStyle(snapshot.isDragging,
-                              provided.draggableProps.style)}>
-                            <ListItemComponent elem={elem} index={index}
-                              onDeleteClick={this.handleDeleteClick}
-                              iconButtonClick={this.handleIconButtonClick}
-                              key={elem.id}></ListItemComponent>
-                          </div>)
-                        }
-                    </Draggable>)
-                })
-              }
-              {provided.placeholder}
-            </div>)
-          }
-        </Droppable>
-      </DragDropContext>
-    </List>);
+                    <Draggable
+                      key={elem.id}
+                      draggableId={elem.id}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                        >
+                          <ListItemComponent
+                            elem={elem}
+                            index={index}
+                            onDeleteClick={this.handleDeleteClick}
+                            iconButtonClick={this.handleIconButtonClick}
+                            key={elem.id}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </List>
+    );
   }
 }
 
-const mapStateToProps = state => ({getPlaces: state.getPlaces});
+const mapStateToProps = state => ({ getPlaces: state.getPlaces });
 
 const mapDispatchToProps = {
   removePlace,
@@ -117,7 +125,10 @@ const mapDispatchToProps = {
 };
 
 ListPlaces.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ListPlaces))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(ListPlaces));

@@ -1,27 +1,27 @@
 export const addPlace = (name, location, id) => ({
-  type: 'ADD_PLACE',
+  type: "ADD_PLACE",
   name,
   location,
-  id,
-})
+  id
+});
 
-export const removePlace = (index) => ({
-  type: 'REMOVE_PLACE',
-  index,
-})
+export const removePlace = index => ({
+  type: "REMOVE_PLACE",
+  index
+});
 
 export const updatePlace = (place, newPlace) => ({
-  type: 'UPDATE_PLACE',
+  type: "UPDATE_PLACE",
   place,
-  newPlace,
-})
+  newPlace
+});
 
-export const setCenter = (location) => ({
-  type: 'SET_CENTER',
-  location,
-})
+export const setCenter = location => ({
+  type: "SET_CENTER",
+  location
+});
 
-export const updatePlacesArray = (placesArray) => ({
-  type: 'UPDATE_PLACES_ARRAY',
-  placesArray,
-})
+export const updatePlacesArray = placesArray => ({
+  type: "UPDATE_PLACES_ARRAY",
+  placesArray
+});

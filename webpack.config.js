@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+var FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -15,7 +15,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
-        },
+        }
       },
       {
         test: /\.css$/,
@@ -28,16 +28,16 @@ module.exports = {
     modules: true,
     reasons: true,
     errorDetails: true,
-    source: true,
+    source: true
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     }),
-    new FriendlyErrorsWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000
   }
